@@ -3,8 +3,158 @@
 :root {
   background-color: #000000;
   color: #ffffff;
+  --glow-primary: rgba(99, 102, 241, 0.5);
+  --glow-secondary: rgba(139, 92, 246, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 body {
   @apply bg-black text-white antialiased;
+}
+
+/* ================================
+   COUNTDOWN TIMER STYLES
+   ================================ */
+
+.countdown-timer {
+  @apply flex flex-col items-center gap-4;
+}
+
+.countdown-label {
+  @apply text-sm md:text-base uppercase tracking-[0.3em] text-gray-400 font-medium;
+}
+
+.countdown-display {
+  @apply flex items-start gap-2 md:gap-4;
+}
+
+.countdown-complete {
+  @apply flex items-center justify-center py-6;
+}
+
+.launch-text {
+  @apply text-2xl md:text-3xl font-bold tracking-wider;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Time Unit Container */
+.time-unit-container {
+  @apply relative flex items-center justify-center;
+  @apply w-14 h-16 md:w-20 md:h-24;
+  @apply rounded-lg md:rounded-xl;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.time-unit-value {
+  @apply text-2xl md:text-4xl font-bold tabular-nums;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-unit-label {
+  @apply mt-2 text-[10px] md:text-xs uppercase tracking-widest text-gray-500;
+}
+
+/* Colon Separator */
+.time-colon {
+  @apply text-2xl md:text-4xl font-light text-gray-600;
+  @apply self-center -mt-6;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8));
+  }
+}
+
+/* ================================
+   DAPP BUTTON STYLES
+   ================================ */
+
+.dapp-button {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply px-8 py-4 md:px-10 md:py-5;
+  @apply text-base md:text-lg font-semibold tracking-wide;
+  @apply rounded-xl;
+  @apply transition-all duration-300 ease-out;
+  @apply no-underline;
+}
+
+.dapp-button--disabled {
+  @apply cursor-not-allowed;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.dapp-button--active {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: 
+    0 0 30px rgba(99, 102, 241, 0.3),
+    0 10px 40px rgba(124, 58, 237, 0.2);
+}
+
+.dapp-button--active:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 0 40px rgba(99, 102, 241, 0.5),
+    0 15px 50px rgba(124, 58, 237, 0.3);
+}
+
+.dapp-button--active:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.dapp-button-text {
+  @apply relative z-10;
+}
+
+.dapp-button-arrow {
+  @apply relative z-10 transition-transform duration-300;
+}
+
+.dapp-button--active:hover .dapp-button-arrow {
+  transform: translateX(4px);
+}
+
+/* Animated gradient border for active button */
+.dapp-button--active::before {
+  content: '';
+  @apply absolute inset-0 rounded-xl;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7, #6366f1);
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dapp-button--active:hover::before {
+  opacity: 0.5;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
