@@ -7,6 +7,10 @@
     {
       "source": "/mine/:path*",
       "destination": "https://nara-simple-ui.vercel.app/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
     }
   ]
 }
