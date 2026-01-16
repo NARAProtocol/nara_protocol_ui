@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/mine",
+      "destination": "https://nara-simple-ui.vercel.app/"
+    },
+    {
+      "source": "/mine/:path*",
+      "destination": "https://nara-simple-ui.vercel.app/:path*"
+    }
+  ]
+}
