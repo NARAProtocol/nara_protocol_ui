@@ -9,8 +9,16 @@
       "destination": "https://nara-simple-ui.vercel.app/:path*"
     },
     {
+      "source": "/mine/assets/:path*",
+      "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
+    },
+    {
       "source": "/assets/:path*",
       "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/favicon.svg",
+      "destination": "https://nara-simple-ui.vercel.app/icon.png"
     }
   ]
 }
