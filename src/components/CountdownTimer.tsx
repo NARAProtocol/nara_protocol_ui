@@ -37,7 +37,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   if (time.isComplete) {
     return (
       <div className={`countdown-complete ${className}`}>
-        <span className="launch-text">PROTOCOL LIVE</span>
+        <span className="launch-text">COMING SOON</span>
       </div>
     );
   }

@@ -71,7 +71,7 @@ const App = () => {
 
         {/* CTA Button Section */}
         <section className="flex justify-center">
-          <DAppButton href={DAPP_URL} isEnabled={isComplete} />
+          <DAppButton href={DAPP_URL} isEnabled={false} />
         </section>
 
         {/* Core Mechanics Section */}
@@ -90,7 +90,7 @@ const App = () => {
         {/* Footer Status Section */}
         <footer className="pt-8 md:pt-12 space-y-2 text-sm md:text-base text-gray-400">
           <p>
-            <span className="text-white">Status:</span> {isComplete ? 'Live' : 'pre-deployment'}
+            <span className="text-white">Status:</span> {isComplete ? 'Coming Soon' : 'pre-deployment'}
           </p>
           <p>
             Experimental. No guarantees.
