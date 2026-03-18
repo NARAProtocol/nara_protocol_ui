@@ -1,26 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NARA | Competitive Token Issuance</title>
-    <meta name="description" content="Competitive token issuance on Base. Tokens are released only when ETH is committed." />
-    
-    <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png" />
-    <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="NARA" />
-    <link rel="manifest" href="/my-favicon/site.webmanifest" />
-    
-    <!-- Fonts - Optional, using system mono for now as per prompt "no google fonts" unless "modern app" request. 
-         But sticking to "clean" and "professional". 
-         The app uses font-mono which defaults to system monospace. 
-    -->
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NARA | Competitive Token Issuance</title>
+  <meta name="description" content="Competitive token issuance on Base. Tokens are released only when ETH is committed." />
+
+  <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png" />
+  <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/my-favicon/site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="NARA" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #09080a;
+      --surface: #110f11;
+      --border:  #272027;
+      --accent:  #bac9b4;
+      --muted:   #877886;
+      --text:    #eeebe9;
+      --dim:     #564e55;
+    }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Courier New', Courier, ui-monospace, monospace;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    /* ── layout ── */
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 88px 24px 120px;
+    }
+
+    /* ── logo ── */
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .logo-mark {
+      background: var(--text);
+      color: var(--bg);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      padding: 2px 8px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    .logo-sub {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    /* ── hero ── */
+    .hero { margin-bottom: 80px; }
+    .hero h1 {
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ── buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      font-family: inherit;
+      font-size: 13px;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.12s, border-color 0.12s;
+      cursor: pointer;
+      border: 1px solid transparent;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: #cddac8; border-color: #cddac8; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--dim);
+      border-color: var(--border);
+    }
+
+    /* ── section label ── */
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    /* ── section spacing ── */
+    .section { margin-bottom: 72px; }
+
+    /* ── facts ── */
+    .facts {
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+    .fact {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 56px;
+      gap: 12px;
+      align-items: start;
+    }
+    .fact-body { font-size: 14px; color: var(--text); line-height: 1.6; }
+    .fact-body strong { color: var(--accent); font-weight: 600; }
+    .fact-tag {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    /* ── loops ── */
+    .loops { border-top: 1px solid var(--border); }
+    .loop {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .loop-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+    .loop-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 48px;
+    }
+    .loop-title {
+      font-size: 15px;
+      color: var(--text);
+    }
+    .loop-desc {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 64px;
+      line-height: 1.65;
+    }
+
+    /* ── trust ── */
+    .trust { display: flex; flex-direction: column; gap: 14px; }
+    .trust-item {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 14px 16px;
+      border-left: 2px solid var(--border);
+      line-height: 1.65;
+    }
+    .trust-item strong { color: var(--text); font-weight: 400; }
+
+    /* ── divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ── links ── */
+    .links { display: flex; flex-direction: column; gap: 10px; }
+    .link-row {
+      display: flex;
+      gap: 0;
+      font-size: 13px;
+      align-items: baseline;
+    }
+    .link-key {
+      color: var(--dim);
+      min-width: 88px;
+      flex-shrink: 0;
+    }
+    .link-row a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      word-break: break-all;
+      transition: text-decoration-color 0.12s;
+    }
+    .link-row a:hover { text-decoration-color: var(--muted); }
+
+    /* ── footer ── */
+    .footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .status { font-size: 12px; color: var(--dim); }
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 7px;
+      vertical-align: middle;
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    .notice { font-size: 11px; color: var(--dim); }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* ── mobile ── */
+    @media (max-width: 480px) {
+      .wrap { padding: 52px 20px 80px; }
+      .fact { grid-template-columns: 1fr; }
+      .fact-tag { display: none; }
+      .loop-desc { padding-left: 0; margin-top: 6px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="logo">
+        <span class="logo-mark">NARA</span>
+        <span class="logo-sub">protocol</span>
+      </div>
+      <h1>NARA rewards commitment,<br>not attention.</h1>
+      <p class="hero-sub">Competitive token issuance on Base.<br>Tokens are released only when ETH is committed.</p>
+      <div class="hero-actions">
+        <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read Docs →</a>
+        <button class="btn btn-ghost" disabled>App — Coming Soon</button>
+      </div>
+    </header>
+
+    <!-- FACTS -->
+    <section class="section">
+      <p class="label">The facts</p>
+      <ul class="facts">
+        <li class="fact">
+          <span class="fact-body"><strong>1,000,000 NARA. Fixed. Forever.</strong> No mint function exists after deployment. The supply cannot change.</span>
+          <span class="fact-tag">on&#8209;chain</span>
+        </li>
+        <li class="fact">
+          <span class="fact-body"><strong>700,000 NARA sealed by code.</strong> The team cannot withdraw them. The contract only releases tokens one way — earned by lockers, epoch by epoch.</span>
+          <span class="fact-tag">on&#8209;chain</span>
+        </li>
+        <li class="fact">
+          <span class="fact-body"><strong>ETH yield from real activity.</strong> Bond purchases route ETH to lockers. Reward flow comes from protocol use, not from diluting other holders.</span>
+          <span class="fact-tag">on&#8209;chain</span>
+        </li>
+        <li class="fact">
+          <span class="fact-body"><strong>Live on Base. All contracts verified.</strong> No pre-sale. No insider vesting cliff. The 700,000 token reserve has distributed zero NARA. The pool is untouched.</span>
+          <span class="fact-tag">verified</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <p class="label">How it works</p>
+      <div class="loops">
+        <div class="loop">
+          <div class="loop-head">
+            <span class="loop-tag">Lock</span>
+            <span class="loop-title">Commit NARA. Earn NARA + ETH every 15 minutes.</span>
+          </div>
+          <p class="loop-desc">Lock for up to one year. Weight is quadratic — locking twice as long earns dramatically more than twice as much. Earlier lockers face less competition and earn through the full warmup ramp.</p>
+        </div>
+        <div class="loop">
+          <div class="loop-head">
+            <span class="loop-tag">Bond</span>
+            <span class="loop-title">Deposit ETH. Receive more NARA than market price.</span>
+          </div>
+          <p class="loop-desc">Buy discounted NARA in exchange for a vesting wait. ETH from bond purchases partially flows back as ETH rewards for lockers — bond buyers and lockers are aligned.</p>
+        </div>
+        <div class="loop">
+          <div class="loop-head">
+            <span class="loop-tag">Arena</span>
+            <span class="loop-title">Burn NARA. Compete for ETH prizes.</span>
+          </div>
+          <p class="loop-desc">Pay ETH to enter. Burn NARA to move and push opponents. Compete for position, claimable ETH, and permanent on-chain reputation. All burned NARA is gone permanently — no recycling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section">
+      <p class="label">Why it's different</p>
+      <div class="trust">
+        <div class="trust-item">
+          <strong>The reserve is sealed, not promised.</strong> 700,000 NARA sit in a contract where the withdrawal path is blocked by code, not by team policy. No multisig can override it.
+        </div>
+        <div class="trust-item">
+          <strong>Yield comes from protocol use, not inflation.</strong> Lockers earn ETH when bonds are purchased and when the arena generates fees. The mechanism is revenue-driven.
+        </div>
+        <div class="trust-item">
+          <strong>Commitment compounds.</strong> The quadratic weight function means locking 12 months doesn't earn 4× more than 3 months — it earns dramatically more. Time has real value here.
+        </div>
+        <div class="trust-item">
+          <strong>Four positions, one token.</strong> Hold for price exposure. Lock for reward flow. Bond for discounted size. Play for competitive upside and on-chain reputation.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- LINKS -->
+    <section class="section">
+      <div class="links">
+        <div class="link-row">
+          <span class="link-key">Docs</span>
+          <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">github.com/NARAProtocol/nara_protocol</a>
+        </div>
+        <div class="link-row">
+          <span class="link-key">X</span>
+          <a href="https://x.com/NARA_protocol" target="_blank" rel="noopener noreferrer">x.com/NARA_protocol</a>
+        </div>
+        <div class="link-row">
+          <span class="link-key">Farcaster</span>
+          <a href="https://warpcast.com/naraprotocol" target="_blank" rel="noopener noreferrer">@naraprotocol</a>
+        </div>
+        <div class="link-row">
+          <span class="link-key">Contract</span>
+          <a href="https://basescan.org/token/0xE444de61752bD13D1D37Ee59c31ef4e489bd727C" target="_blank" rel="noopener noreferrer">0xE444de61752bD13D1D37Ee59c31ef4e489bd727C</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="status"><span class="status-dot"></span>Live on Base — app coming soon</p>
+      <p class="notice">Experimental. No guarantees.</p>
+    </footer>
+
+  </main>
+</body>
 </html>
