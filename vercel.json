@@ -15,10 +15,6 @@
     {
       "source": "/assets/:path*",
       "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
-    },
-    {
-      "source": "/favicon.svg",
-      "destination": "https://nara-simple-ui.vercel.app/icon.png"
     }
   ]
 }
