@@ -263,8 +263,7 @@
       padding: 28px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      justify-content: space-between;
+      gap: 12px;
     }
 
     .panel-head {
@@ -280,12 +279,6 @@
       font-weight: 600;
     }
 
-    .panel-head p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
     .mini-label {
       color: var(--dim);
       font-size: 0.72rem;
@@ -293,7 +286,7 @@
 
     .detail-list {
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .detail-row {
@@ -301,7 +294,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 14px;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--border-soft);
     }
 
@@ -318,26 +311,7 @@
     .detail-v {
       text-align: right;
       color: var(--text);
-      font-weight: 500;
-    }
-
-    .panel-foot {
-      padding: 16px 18px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(63, 124, 255, 0.12), rgba(63, 124, 255, 0.06));
-      border: 1px solid rgba(63, 124, 255, 0.22);
-    }
-
-    .panel-foot strong {
-      display: block;
-      font-size: 0.98rem;
-    }
-
-    .panel-foot span {
-      display: block;
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.92rem;
+      font-weight: 600;
     }
 
     .stats {
@@ -544,40 +518,35 @@
           <div class="panel-head">
             <div>
               <div class="mini-label">Protocol snapshot</div>
-              <h2>What matters onchain</h2>
-              <p>The board is only one entry point. The protocol is broader.</p>
+              <h2>Live snapshot</h2>
             </div>
           </div>
           <div class="detail-list">
             <div class="detail-row">
               <span class="detail-k">Supply</span>
-              <span class="detail-v">1,000,000 NARA fixed forever</span>
+              <span class="detail-v">1M fixed</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Reward reserve</span>
-              <span class="detail-v">700,000 sealed in reward reserve</span>
+              <span class="detail-k">Rewards</span>
+              <span class="detail-v">700K sealed</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Bond inventory</span>
-              <span class="detail-v">250,000 sealed in bond vault</span>
+              <span class="detail-k">Bonds</span>
+              <span class="detail-v">250K sealed</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Liquid float</span>
-              <span class="detail-v">~20,000 NARA across market float</span>
+              <span class="detail-k">Float</span>
+              <span class="detail-v">~20K liquid</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Alignment</span>
-              <span class="detail-v">30,000 locked for one year by treasury + owner</span>
+              <span class="detail-k">Locked</span>
+              <span class="detail-v">30K / 1y / treasury + owner</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Engine</span>
-              <span class="detail-v">15 minute epochs on Base</span>
+              <span class="detail-k">Epochs</span>
+              <span class="detail-v">15m on Base</span>
             </div>
           </div>
-        </div>
-        <div class="panel-foot">
-          <strong>Live now: locking is active.</strong>
-          <span>The app at /mine is live today. Bonds stay closed until liquidity and price are ready.</span>
         </div>
       </aside>
     </section>
