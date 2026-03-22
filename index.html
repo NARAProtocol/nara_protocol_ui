@@ -129,7 +129,6 @@
     .nav a,
     .eyebrow,
     .mini-label,
-    .stat-label,
     .detail-k,
     .footer,
     .section-label,
@@ -184,7 +183,6 @@
 
     .hero-copy,
     .hero-panel,
-    .card,
     .info-card,
     .surface-link {
       border: 1px solid var(--border);
@@ -314,32 +312,6 @@
       font-weight: 600;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .card {
-      padding: 22px 20px;
-      border-radius: 24px;
-    }
-
-    .stat-value {
-      display: block;
-      font-size: clamp(1.45rem, 3vw, 2.15rem);
-      font-weight: 700;
-      letter-spacing: -0.05em;
-    }
-
-    .stat-label {
-      display: block;
-      margin-top: 10px;
-      color: var(--dim);
-      font-size: 0.72rem;
-    }
-
     .section {
       margin-top: 22px;
       padding-top: 10px;
@@ -411,18 +383,11 @@
       color: var(--text);
     }
 
-    @media (max-width: 1120px) {
-      .stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
     @media (max-width: 980px) {
       .hero {
         grid-template-columns: 1fr;
       }
 
-      .stats,
       .grid-3,
       .surfaces {
         grid-template-columns: 1fr 1fr;
@@ -446,7 +411,6 @@
 
       .hero-copy,
       .hero-panel,
-      .card,
       .info-card,
       .surface-link {
         border-radius: 22px;
@@ -462,7 +426,6 @@
         font-size: clamp(2.5rem, 16vw, 4rem);
       }
 
-      .stats,
       .grid-3,
       .surfaces {
         grid-template-columns: 1fr;
@@ -549,29 +512,6 @@
           </div>
         </div>
       </aside>
-    </section>
-
-    <section class="stats" aria-label="Key stats">
-      <article class="card">
-        <span class="stat-value">1M</span>
-        <span class="stat-label">Fixed NARA supply</span>
-      </article>
-      <article class="card">
-        <span class="stat-value">700K</span>
-        <span class="stat-label">Sealed reward reserve</span>
-      </article>
-      <article class="card">
-        <span class="stat-value">250K</span>
-        <span class="stat-label">Sealed bond inventory</span>
-      </article>
-      <article class="card">
-        <span class="stat-value">~20K</span>
-        <span class="stat-label">Estimated liquid float</span>
-      </article>
-      <article class="card">
-        <span class="stat-value">30K</span>
-        <span class="stat-label">One-year treasury + owner lock</span>
-      </article>
     </section>
 
     <section class="section">
