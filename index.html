@@ -133,7 +133,6 @@
     .detail-k,
     .footer,
     .section-label,
-    .hero-note,
     .surface-link span {
       font-family: 'IBM Plex Mono', ui-monospace, monospace;
       letter-spacing: 0.08em;
@@ -257,25 +256,6 @@
       border-color: var(--border);
       background: rgba(255, 255, 255, 0.03);
       color: var(--text);
-    }
-
-    .hero-note {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 28px;
-      color: var(--dim);
-      font-size: 0.76rem;
-    }
-
-    .hero-note span::before {
-      content: '/';
-      margin-right: 8px;
-      color: rgba(255, 255, 255, 0.18);
-    }
-
-    .hero-note span:first-child::before {
-      display: none;
     }
 
     .hero-panel {
@@ -552,15 +532,10 @@
       <div class="hero-copy">
         <div class="eyebrow">Fixed supply. Sealed reserves. Live on Base.</div>
         <h1>Hard supply. Patient yield.</h1>
-        <p class="hero-sub">NARA is a Base-native time-preference yield protocol. <strong>1,000,000 NARA</strong> is fixed forever, <strong>700,000</strong> is sealed for rewards, <strong>250,000</strong> is sealed for bonds, roughly <strong>20,000</strong> remains liquid, and treasury plus owner already locked <strong>30,000 NARA</strong> for one year.</p>
+        <p class="hero-sub">Fixed-supply yield on Base with sealed reward and bond reserves.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/mine">Open App &#8594;</a>
           <a class="btn btn-secondary" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Read Docs</a>
-        </div>
-        <div class="hero-note">
-          <span>15 minute epochs</span>
-          <span>Bonds deployed, not open</span>
-          <span>/mine is the launch surface</span>
         </div>
       </div>
 
