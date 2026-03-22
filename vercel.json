@@ -4,19 +4,19 @@
   "rewrites": [
     {
       "source": "/mine",
-      "destination": "https://nara-simple-ui.vercel.app/"
+      "destination": "https://nara-lockboard.pages.dev/"
     },
     {
       "source": "/mine/:path*",
-      "destination": "https://nara-simple-ui.vercel.app/:path*"
+      "destination": "https://nara-lockboard.pages.dev/:path*"
     },
     {
-      "source": "/mine/assets/:path*",
-      "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
+      "source": "/api/:path*",
+      "destination": "https://nara-lockboard.pages.dev/api/:path*"
     },
     {
       "source": "/assets/:path*",
-      "destination": "https://nara-simple-ui.vercel.app/assets/:path*"
+      "destination": "https://nara-lockboard.pages.dev/assets/:path*"
     }
   ]
 }
