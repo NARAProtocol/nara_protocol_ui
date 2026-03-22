@@ -1,62 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1040" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B0E14"/>
+      <stop offset="0.52" stop-color="#08090D"/>
+      <stop offset="1" stop-color="#06070B"/>
+    </linearGradient>
+    <radialGradient id="glowGold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(170 70) rotate(41.7) scale(420 240)">
+      <stop stop-color="#D6B07A" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#D6B07A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 120) rotate(131.2) scale(420 250)">
+      <stop stop-color="#3F7CFF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#3F7CFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141925" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#0C0F17" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#121621" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#0C1018" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4D86FF"/>
+      <stop offset="1" stop-color="#2A67EB"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
 
-  <!-- dark background -->
-  <rect width="1200" height="630" fill="#09080a"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glowGold)"/>
+  <rect width="1200" height="630" fill="url(#glowBlue)"/>
+  <rect x="1" y="1" width="1198" height="628" stroke="rgba(255,255,255,0.08)" stroke-opacity="0.16"/>
 
-  <!-- subtle border -->
-  <rect x="1" y="1" width="1198" height="628" rx="0" fill="none" stroke="#272027" stroke-width="2"/>
-
-  <!-- icon: 280x280 centered horizontally at x=460, y=90 -->
-  <g transform="translate(460, 90)">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#877886"/>
-        <stop offset="100%" stop-color="#41373f"/>
-      </linearGradient>
-      <clipPath id="c">
-        <rect width="280" height="280" rx="98" ry="98"/>
-      </clipPath>
-    </defs>
-    <!-- rounded square background -->
-    <rect width="280" height="280" rx="98" ry="98" fill="url(#g)"/>
-    <!-- N glyph: original is 200x200 viewBox, scale to 280x280 = factor 1.4, so translate(0,0) scale(1.4) -->
-    <g clip-path="url(#c)" transform="scale(1.4)">
-      <g fill="#bac9b4" stroke="#eeebe9" stroke-width="0.75"
-         transform="matrix(12.659340659340659,0,0,12.659340659340659,11.256301949312402,190.007288644602)">
-        <path d="M12.95-14.22L12.95 0L9.54 0L4.50-8.85L4.50 0L1.07 0L1.07-14.22L4.50-14.22L9.53-5.37L9.53-14.22Z"/>
-      </g>
-    </g>
+  <g transform="translate(80 62)">
+    <rect width="132" height="52" rx="12" fill="#F5EFE6"/>
+    <text x="16" y="35" fill="#0A0B10" font-family="Space Grotesk, Arial, sans-serif" font-size="29" font-weight="700" letter-spacing="-1.2">NARA</text>
+    <text x="148" y="34" fill="#8A8278" font-family="IBM Plex Mono, Courier New, monospace" font-size="19" letter-spacing="1.2">protocol</text>
   </g>
 
-  <!-- NARA wordmark -->
-  <text x="600" y="452"
-        text-anchor="middle"
-        font-family="Arial Black, Arial, ui-sans-serif, sans-serif"
-        font-size="72"
-        font-weight="900"
-        letter-spacing="-3"
-        fill="#eeebe9">NARA</text>
+  <g transform="translate(912 66)">
+    <rect width="208" height="44" rx="22" fill="#111622" stroke="#2B3241"/>
+    <circle cx="24" cy="22" r="6" fill="#D6B07A"/>
+    <text x="40" y="28" fill="#F4EFE6" font-family="IBM Plex Mono, Courier New, monospace" font-size="15" letter-spacing="1.5">BASE MAINNET LIVE</text>
+  </g>
 
-  <!-- protocol label -->
-  <text x="600" y="490"
-        text-anchor="middle"
-        font-family="Courier New, Courier, monospace"
-        font-size="22"
-        fill="#877886"
-        letter-spacing="2">protocol</text>
+  <text x="80" y="222" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-3.8">Commit capital.</text>
+  <text x="80" y="296" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-3.8">Earn the flow.</text>
 
-  <!-- tagline -->
-  <text x="600" y="546"
-        text-anchor="middle"
-        font-family="Courier New, Courier, monospace"
-        font-size="20"
-        fill="#564e55">NARA rewards commitment, not attention.</text>
+  <text x="82" y="352" fill="#A79F92" font-family="Space Grotesk, Arial, sans-serif" font-size="28" font-weight="500">Fixed-supply yield on Base with a sealed reserve and live OG board.</text>
+  <text x="82" y="392" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="16" letter-spacing="1.2">LOCK NARA / EARN NARA + ETH / OPEN AT NARAPROTOCOL.IO/MINE</text>
 
-  <!-- domain -->
-  <text x="600" y="598"
-        text-anchor="middle"
-        font-family="Courier New, Courier, monospace"
-        font-size="15"
-        fill="#3a333a">naraprotocol.io · live on Base</text>
+  <g filter="url(#shadow)" transform="translate(748 146)">
+    <rect width="372" height="214" rx="30" fill="url(#panel)" stroke="#262D3B"/>
+    <text x="28" y="38" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="14" letter-spacing="1.3">PROTOCOL SNAPSHOT</text>
 
+    <line x1="28" y1="74" x2="344" y2="74" stroke="#202633"/>
+    <line x1="28" y1="122" x2="344" y2="122" stroke="#202633"/>
+    <line x1="28" y1="170" x2="344" y2="170" stroke="#202633"/>
+
+    <text x="28" y="104" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.1">SUPPLY</text>
+    <text x="344" y="104" text-anchor="end" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="600">1,000,000 fixed</text>
+
+    <text x="28" y="152" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.1">RESERVE</text>
+    <text x="344" y="152" text-anchor="end" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="600">700,000 sealed</text>
+
+    <text x="28" y="200" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.1">STATUS</text>
+    <text x="344" y="200" text-anchor="end" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="600">OG board live</text>
+  </g>
+
+  <g transform="translate(80 456)">
+    <rect width="244" height="108" rx="24" fill="url(#card)" stroke="#232A38"/>
+    <text x="24" y="38" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.2">FIXED SUPPLY</text>
+    <text x="24" y="84" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1.8">1,000,000</text>
+  </g>
+
+  <g transform="translate(344 456)">
+    <rect width="244" height="108" rx="24" fill="url(#card)" stroke="#232A38"/>
+    <text x="24" y="38" fill="#7E766B" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.2">SEALED RESERVE</text>
+    <text x="24" y="84" fill="#F4EFE6" font-family="Space Grotesk, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1.8">700,000</text>
+  </g>
+
+  <g transform="translate(608 456)">
+    <rect width="512" height="108" rx="24" fill="url(#cta)"/>
+    <text x="28" y="38" fill="#DCE7FF" font-family="IBM Plex Mono, Courier New, monospace" font-size="13" letter-spacing="1.2">LIVE SURFACE</text>
+    <text x="28" y="84" fill="#FFFFFF" font-family="Space Grotesk, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="-1.4">naraprotocol.io/mine</text>
+  </g>
 </svg>
