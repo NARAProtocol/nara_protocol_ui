@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NARA | Fixed-Supply Yield On Base</title>
-  <meta name="description" content="1,000,000 NARA fixed forever. 700,000 NARA sealed in code. Lock NARA to earn NARA and ETH on Base. The OG board is live." />
+  <title>NARA | Fixed-Supply Yield Protocol On Base</title>
+  <meta name="description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#08090d" />
   <link rel="canonical" href="https://www.naraprotocol.io/" />
@@ -18,19 +18,19 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.naraprotocol.io/" />
-  <meta property="og:title" content="NARA | Fixed-Supply Yield On Base" />
-  <meta property="og:description" content="1,000,000 NARA fixed forever. 700,000 NARA sealed in code. Lock NARA to earn NARA and ETH on Base. The OG board is live." />
-  <meta property="og:image" content="https://www.naraprotocol.io/og-image.svg" />
+  <meta property="og:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
+  <meta property="og:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta property="og:image" content="https://www.naraprotocol.io/og-image.svg?v=2" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@NARA_protocol" />
-  <meta name="twitter:title" content="NARA | Fixed-Supply Yield On Base" />
-  <meta name="twitter:description" content="1,000,000 NARA fixed forever. 700,000 NARA sealed in code. Lock NARA to earn NARA and ETH on Base. The OG board is live." />
-  <meta name="twitter:image" content="https://www.naraprotocol.io/og-image.svg" />
+  <meta name="twitter:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
+  <meta name="twitter:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta name="twitter:image" content="https://www.naraprotocol.io/og-image.svg?v=2" />
 
-  <meta name="keywords" content="NARA, Base, crypto, DeFi, token, lockboard, fixed supply, yield" />
+  <meta name="keywords" content="NARA, Base, DeFi, fixed supply, sealed reserve, bond vault, yield protocol, onchain rewards" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +42,7 @@
       "@type": "WebSite",
       "name": "NARA Protocol",
       "url": "https://www.naraprotocol.io/",
-      "description": "Fixed-supply yield protocol on Base with a live OG lock board."
+      "description": "Base-native fixed-supply yield protocol with sealed reward and bond reserves."
     }
   </script>
 
@@ -51,16 +51,13 @@
 
     :root {
       --bg: #08090d;
-      --bg-soft: #10131a;
       --surface: rgba(17, 20, 28, 0.84);
-      --surface-strong: rgba(13, 16, 24, 0.96);
       --border: rgba(255, 255, 255, 0.1);
       --border-soft: rgba(255, 255, 255, 0.06);
       --text: #f4efe6;
       --muted: #a79f92;
       --dim: #7e766b;
       --blue: #3f7cff;
-      --blue-soft: rgba(63, 124, 255, 0.16);
       --gold: #d6b07a;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
     }
@@ -135,7 +132,9 @@
     .stat-label,
     .detail-k,
     .footer,
-    .section-label {
+    .section-label,
+    .hero-note,
+    .surface-link span {
       font-family: 'IBM Plex Mono', ui-monospace, monospace;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -178,7 +177,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
       gap: 32px;
       align-items: stretch;
       padding: 28px 0 34px;
@@ -187,6 +186,7 @@
     .hero-copy,
     .hero-panel,
     .card,
+    .info-card,
     .surface-link {
       border: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(19, 23, 33, 0.92), rgba(11, 14, 20, 0.92));
@@ -217,9 +217,9 @@
     .hero-sub {
       margin: 22px 0 0;
       max-width: 42rem;
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(1rem, 2vw, 1.16rem);
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.72;
     }
 
     .hero-actions {
@@ -242,7 +242,8 @@
       transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
     }
 
-    .btn:hover {
+    .btn:hover,
+    .surface-link:hover {
       transform: translateY(-1px);
     }
 
@@ -264,7 +265,7 @@
       gap: 10px 18px;
       margin-top: 28px;
       color: var(--dim);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
     }
 
     .hero-note span::before {
@@ -361,7 +362,7 @@
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 16px;
       margin-top: 22px;
     }
@@ -373,7 +374,7 @@
 
     .stat-value {
       display: block;
-      font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
       font-weight: 700;
       letter-spacing: -0.05em;
     }
@@ -396,72 +397,40 @@
       margin-bottom: 14px;
     }
 
-    .grid-3 {
+    .grid-3,
+    .surfaces {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .info-card {
+    .info-card,
+    .surface-link {
       padding: 24px;
       border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(15, 18, 26, 0.88), rgba(9, 11, 16, 0.88));
     }
 
-    .info-card h3 {
+    .info-card h3,
+    .surface-link strong {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 600;
+      display: block;
     }
 
-    .info-card p {
+    .info-card p,
+    .surface-link p {
       margin: 10px 0 0;
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.7;
     }
 
-    .surfaces {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .surface-link {
-      display: block;
-      padding: 24px;
-      border-radius: 24px;
-      transition: transform 0.14s ease, border-color 0.14s ease;
-    }
-
-    .surface-link:hover {
-      transform: translateY(-2px);
-      border-color: rgba(63, 124, 255, 0.32);
-    }
-
-    .surface-link strong {
-      display: block;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .surface-link p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 0.93rem;
-      line-height: 1.65;
-    }
-
     .surface-link span {
       display: inline-block;
       margin-top: 18px;
       color: #93b4ff;
-      font-family: 'IBM Plex Mono', ui-monospace, monospace;
       font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
     .footer {
@@ -486,6 +455,12 @@
     .footer-links a:hover,
     .nav a:hover {
       color: var(--text);
+    }
+
+    @media (max-width: 1120px) {
+      .stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 980px) {
@@ -567,7 +542,7 @@
       </a>
       <nav class="nav" aria-label="Primary">
         <span class="pill pill-live">Base mainnet live</span>
-        <a href="/mine">OG Board</a>
+        <a href="/mine">Open App</a>
         <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Docs</a>
         <a href="https://x.com/NARA_protocol" target="_blank" rel="noopener noreferrer">X</a>
       </nav>
@@ -575,17 +550,17 @@
 
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Fixed supply. Sealed reserve. Live on Base.</div>
-        <h1>Commit capital. Earn the flow.</h1>
-        <p class="hero-sub">NARA is a fixed-supply yield protocol on Base. Lockers earn NARA and ETH through a live epoch engine. The OG board is open now.</p>
+        <div class="eyebrow">Fixed supply. Sealed reserves. Live on Base.</div>
+        <h1>Hard supply. Patient yield.</h1>
+        <p class="hero-sub">NARA is a Base-native time-preference yield protocol. <strong>1,000,000 NARA</strong> is fixed forever, <strong>700,000</strong> is sealed for rewards, <strong>250,000</strong> is sealed for bonds, roughly <strong>20,000</strong> remains liquid, and treasury plus owner already locked <strong>30,000 NARA</strong> for one year.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/mine">Open OG Board &#8594;</a>
+          <a class="btn btn-primary" href="/mine">Open App &#8594;</a>
           <a class="btn btn-secondary" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Read Docs</a>
         </div>
         <div class="hero-note">
-          <span>100 founding lockers</span>
-          <span>Contracts verified</span>
-          <span>Bonds closed until liquidity is ready</span>
+          <span>15 minute epochs</span>
+          <span>Bonds deployed, not open</span>
+          <span>/mine is the launch surface</span>
         </div>
       </div>
 
@@ -594,8 +569,8 @@
           <div class="panel-head">
             <div>
               <div class="mini-label">Protocol snapshot</div>
-              <h2>What matters right now</h2>
-              <p>Only the live facts. No filler.</p>
+              <h2>What matters onchain</h2>
+              <p>The board is only one entry point. The protocol is broader.</p>
             </div>
           </div>
           <div class="detail-list">
@@ -604,22 +579,30 @@
               <span class="detail-v">1,000,000 NARA fixed forever</span>
             </div>
             <div class="detail-row">
-              <span class="detail-k">Reserve</span>
-              <span class="detail-v">700,000 NARA sealed in code</span>
+              <span class="detail-k">Reward reserve</span>
+              <span class="detail-v">700,000 sealed in reward reserve</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Bond inventory</span>
+              <span class="detail-v">250,000 sealed in bond vault</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Liquid float</span>
+              <span class="detail-v">~20,000 NARA across market float</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Alignment</span>
+              <span class="detail-v">30,000 locked for one year by treasury + owner</span>
             </div>
             <div class="detail-row">
               <span class="detail-k">Engine</span>
               <span class="detail-v">15 minute epochs on Base</span>
             </div>
-            <div class="detail-row">
-              <span class="detail-k">Live surface</span>
-              <span class="detail-v">OG lock board at /mine</span>
-            </div>
           </div>
         </div>
         <div class="panel-foot">
-          <strong>Live mode: locking is live.</strong>
-          <span>The bond market is deployed but intentionally closed until liquidity is ready.</span>
+          <strong>Live now: locking is active.</strong>
+          <span>The app at /mine is live today. Bonds stay closed until liquidity and price are ready.</span>
         </div>
       </aside>
     </section>
@@ -634,59 +617,64 @@
         <span class="stat-label">Sealed reward reserve</span>
       </article>
       <article class="card">
-        <span class="stat-value">15M</span>
-        <span class="stat-label">Epoch cadence</span>
+        <span class="stat-value">250K</span>
+        <span class="stat-label">Sealed bond inventory</span>
       </article>
       <article class="card">
-        <span class="stat-value">100</span>
-        <span class="stat-label">OG board slots</span>
+        <span class="stat-value">~20K</span>
+        <span class="stat-label">Estimated liquid float</span>
+      </article>
+      <article class="card">
+        <span class="stat-value">30K</span>
+        <span class="stat-label">One-year treasury + owner lock</span>
       </article>
     </section>
 
     <section class="section">
-      <div class="section-label">Why NARA</div>
+      <div class="section-label">Protocol edges</div>
       <div class="grid-3">
         <article class="info-card">
-          <h3>Supply cannot expand</h3>
-          <p>No mint switch after deployment. The supply is fixed at 1,000,000 NARA.</p>
+          <h3>Hard supply</h3>
+          <p>No mint switch survives deployment. The supply is fixed at 1,000,000 NARA.</p>
         </article>
         <article class="info-card">
-          <h3>Yield is tied to activity</h3>
-          <p>Lockers earn NARA from the sealed reserve and ETH from protocol revenue flow.</p>
+          <h3>Sealed distribution</h3>
+          <p>700,000 NARA for rewards and 250,000 NARA for bonds are sealed by contract logic, not by policy promises.</p>
         </article>
         <article class="info-card">
-          <h3>Code beats promises</h3>
-          <p>The reward reserve and bond vault are sealed by contract logic, not by policy.</p>
+          <h3>Yield follows patience</h3>
+          <p>The live epoch engine rewards long-duration lockers with NARA drip today and ETH flow as protocol revenue expands.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-label">Go deeper</div>
+      <div class="section-label">Start here</div>
       <div class="surfaces">
         <a class="surface-link" href="/mine">
-          <strong>OG Lock Board</strong>
-          <p>Claim one of 100 founding tiles, lock NARA, and track rewards through the live board.</p>
-          <span>Open /mine</span>
+          <strong>Open the app</strong>
+          <p>Use the live interface for locking, wallet state, rewards, and the current launch board at /mine.</p>
+          <span>Launch /mine</span>
         </a>
         <a class="surface-link" href="https://app.uniswap.org/explore/tokens/base/0xe444de61752bd13d1d37ee59c31ef4e489bd727c" target="_blank" rel="noopener noreferrer">
           <strong>Trade NARA</strong>
-          <p>Access the live Base market and route into the lock board from the token itself.</p>
+          <p>Access the live Base market, understand the thin float, and route into the app when you are ready to lock.</p>
           <span>Open Uniswap</span>
         </a>
         <a class="surface-link" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">
-          <strong>Read the docs</strong>
-          <p>Contracts, deployment details, operator notes, and the current live-state reference.</p>
+          <strong>Read docs</strong>
+          <p>Contracts, live-state notes, operator context, and deeper protocol research live in the public repo.</p>
           <span>Open GitHub</span>
         </a>
       </div>
     </section>
 
     <footer class="footer">
-      <div>Built on Base &middot; Fixed supply &middot; Experimental</div>
+      <div>Base mainnet &middot; Fixed supply &middot; Sealed reserves</div>
       <div class="footer-links">
+        <a href="/mine">App</a>
         <a href="https://basescan.org/token/0xE444de61752bD13D1D37Ee59c31ef4e489bd727C" target="_blank" rel="noopener noreferrer">BaseScan</a>
-        <a href="https://warpcast.com/naraprotocol" target="_blank" rel="noopener noreferrer">Farcaster</a>
+        <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Docs</a>
         <a href="https://x.com/NARA_protocol" target="_blank" rel="noopener noreferrer">X</a>
       </div>
     </footer>
