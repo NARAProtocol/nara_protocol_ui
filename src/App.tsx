@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+﻿import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { EpochTimer } from './components/EpochTimer';
 
-const APP_URL  = 'https://app.naraprotocol.com';
+const APP_URL  = '/mine';
 const DOCS_URL = 'https://github.com/NARAProtocol/nara_protocol';
 
-// ── Animated number count-up ─────────────────────────────────────────────────
+// â”€â”€ Animated number count-up â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function useCountUp(target: number, duration = 900, delay = 0) {
   const [value, setValue] = useState(0);
   const startedRef = useRef(false);
@@ -34,7 +34,7 @@ function useCountUp(target: number, duration = 900, delay = 0) {
   return { value, run };
 }
 
-// ── IntersectionObserver trigger ─────────────────────────────────────────────
+// â”€â”€ IntersectionObserver trigger â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -60,7 +60,7 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-// ── Snapshot row with count-up ───────────────────────────────────────────────
+// â”€â”€ Snapshot row with count-up â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface SnapRowProps {
   label: string;
   countTarget: number;
@@ -91,7 +91,7 @@ function SnapRow({ label, countTarget, suffix = '', delay = 0, inView }: SnapRow
   );
 }
 
-// ── Main App ─────────────────────────────────────────────────────────────────
+// â”€â”€ Main App â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function App() {
   const { ref: snapRef, inView: snapInView } = useInView(0.1);
   const { ref: edgesRef, inView: edgesInView } = useInView(0.1);
@@ -101,7 +101,7 @@ export default function App() {
       {/* Background bloom */}
       <div className="bg-bloom" aria-hidden="true" />
 
-      {/* ── Nav ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <nav className="nav">
         <div className="nav__logo">
           <span className="nav__mark">NARA</span>
@@ -119,7 +119,7 @@ export default function App() {
         </div>
       </nav>
 
-      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <main className="hero">
         <div className="hero__left">
           {/* Eyebrow */}
@@ -137,12 +137,12 @@ export default function App() {
           {/* Sub */}
           <p className="hero__sub">
             Lock NARA. Earn ETH every epoch.<br />
-            700,000 sealed by code — not by promise.
+            700,000 sealed by code - not by promise.
           </p>
 
           {/* CTAs */}
           <div className="cta-group">
-            <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+            <a href={APP_URL} className="btn btn--primary">
               Open App
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -154,7 +154,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* ── Protocol Snapshot sidebar ───────────────────────────────── */}
+        {/* â”€â”€ Protocol Snapshot sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <aside className="snapshot" ref={snapRef}>
           <div className="snapshot__header">
             <span className="snapshot__title">Protocol Snapshot</span>
@@ -186,7 +186,7 @@ export default function App() {
             <SnapRow
               label="Locker Weight"
               countTarget={2}
-              suffix="× quadratic"
+              suffix="x quadratic"
               delay={360}
               inView={snapInView}
             />
@@ -194,7 +194,7 @@ export default function App() {
 
           {/* Live epoch counter */}
           <div className="snapshot__epoch">
-            <div className="snapshot__epoch-label">EPOCHS · 15m on Base</div>
+            <div className="snapshot__epoch-label">EPOCHS - 15m on Base</div>
             <EpochTimer />
           </div>
 
@@ -206,12 +206,12 @@ export default function App() {
             className="snapshot__scan"
           >
             <span className="live-dot live-dot--dim" aria-hidden="true" />
-            Verified on BaseScan →
+            Verified on BaseScan {"->"}
           </a>
         </aside>
       </main>
 
-      {/* ── Protocol Edges ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Protocol Edges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="edges" ref={edgesRef}>
         <div className="edges__label">Protocol Edges</div>
 
@@ -238,7 +238,7 @@ export default function App() {
             {
               tag: 'Weight',
               title: 'Quadratic duration.',
-              body: '2× the lock time earns dramatically more than 2× rewards. Time has real value.',
+              body: '2x the lock time earns dramatically more than 2x rewards. Time has real value.',
               delay: 360,
             },
           ].map((edge) => (
@@ -255,7 +255,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <footer className="footer">
         <div className="footer__links">
           {[
@@ -277,3 +277,5 @@ export default function App() {
     </div>
   );
 }
+
+
