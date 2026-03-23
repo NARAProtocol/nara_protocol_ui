@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NARA | Fixed-Supply Yield Protocol On Base</title>
-  <meta name="description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <title>NARA | Live Distribution Core On Base</title>
+  <meta name="description" content="NARA is a live distribution core on Base: finite NARA from the sealed reserve, ETH from current and future products, routed every 15 minutes to committed lockers by active weight." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#08090d" />
   <link rel="canonical" href="https://www.naraprotocol.io/" />
@@ -18,8 +18,8 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.naraprotocol.io/" />
-  <meta property="og:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
-  <meta property="og:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta property="og:title" content="NARA | Live Distribution Core On Base" />
+  <meta property="og:description" content="Finite NARA from the sealed reserve. ETH from current and future products. Routed every 15 minutes to committed lockers by active weight." />
   <meta property="og:image" content="https://www.naraprotocol.io/og-image-v4.png" />
     <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
@@ -27,12 +27,12 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@NARA_protocol" />
-  <meta name="twitter:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
-  <meta name="twitter:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta name="twitter:title" content="NARA | Live Distribution Core On Base" />
+  <meta name="twitter:description" content="Finite NARA from the sealed reserve. ETH from current and future products. Routed every 15 minutes to committed lockers by active weight." />
   <meta name="twitter:image" content="https://www.naraprotocol.io/og-image-v4.png" />
-    <meta name="twitter:image:alt" content="NARA protocol live snapshot on Base" />
+    <meta name="twitter:image:alt" content="NARA distribution core on Base" />
 
-  <meta name="keywords" content="NARA, Base, DeFi, fixed supply, sealed reserve, bond vault, yield protocol, onchain rewards" />
+  <meta name="keywords" content="NARA, Base, DeFi, distribution engine, fixed supply, sealed reserve, bond vault, protocol earnings" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +44,7 @@
       "@type": "WebSite",
       "name": "NARA Protocol",
       "url": "https://www.naraprotocol.io/",
-      "description": "Base-native fixed-supply yield protocol with sealed reward and bond reserves."
+      "description": "NARA is a live distribution core on Base that routes finite NARA and future protocol ETH to committed lockers."
     }
   </script>
 
@@ -447,6 +447,435 @@
         text-align: left;
       }
     }
+  
+
+    .hero {
+      grid-template-columns: minmax(0, 0.84fr) minmax(480px, 1.16fr);
+      gap: 28px;
+    }
+
+    .hero-copy,
+    .core-panel {
+      border-radius: 32px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::before,
+    .core-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top left, rgba(214, 176, 122, 0.09), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(63, 124, 255, 0.08), transparent 30%);
+      opacity: 0.95;
+    }
+
+    .hero-copy > *,
+    .core-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      max-width: 8ch;
+    }
+
+    .hero-sub {
+      max-width: 34rem;
+      line-height: 1.74;
+    }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .fact-pill,
+    .core-status,
+    .core-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .fact-pill,
+    .core-badge,
+    .core-status,
+    .metric-card span {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .core-panel {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(19, 23, 33, 0.94), rgba(11, 14, 20, 0.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      --reserve-intensity: 1;
+      --eth-intensity: 0.08;
+      --distribution-intensity: 0.7;
+      --pulse-duration: 4.8s;
+      --pulse-strength: 0.42;
+    }
+
+    .core-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .core-panel-head h2 {
+      margin: 2px 0 0;
+      font-size: 1.16rem;
+      font-weight: 600;
+    }
+
+    .core-status {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .core-status::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(214, 176, 122, 0.7);
+      flex: 0 0 auto;
+    }
+
+    .core-panel.is-stale .core-status {
+      color: var(--gold);
+      border-color: rgba(214, 176, 122, 0.28);
+      background: rgba(214, 176, 122, 0.08);
+    }
+
+    .core-panel.is-fallback .core-status {
+      color: var(--muted);
+    }
+
+    .core-scene {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      border: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at center, rgba(244, 239, 230, 0.03), transparent 40%),
+        radial-gradient(circle at center, rgba(214, 176, 122, 0.06), transparent 58%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .core-scene::before,
+    .core-scene::after {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .core-scene::before {
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .core-scene::after {
+      inset: auto 10% -28%;
+      height: 44%;
+      background: radial-gradient(circle, rgba(63, 124, 255, 0.18), transparent 60%);
+      opacity: calc(0.2 + (var(--eth-intensity) * 0.7));
+      filter: blur(38px);
+      z-index: 0;
+    }
+
+    .core-svg {
+      width: min(100%, 640px);
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .shell-shadow {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.04);
+      stroke-width: 1;
+    }
+
+    .shell-aura {
+      fill: none;
+      stroke: rgba(214, 176, 122, 0.12);
+      stroke-width: 32;
+      filter: blur(12px);
+      opacity: calc(0.25 + (var(--reserve-intensity) * 0.35));
+    }
+
+    .shell-ring,
+    .shell-ring--inner,
+    .reserve-track,
+    .reserve-ring,
+    .progress-track,
+    .progress-ring {
+      fill: none;
+      stroke-linecap: round;
+      transform-origin: 320px 320px;
+      transform: rotate(-90deg);
+    }
+
+    .shell-ring {
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 2;
+    }
+
+    .shell-ring--inner {
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 1;
+    }
+
+    .reserve-track {
+      stroke: rgba(214, 176, 122, 0.16);
+      stroke-width: 18;
+    }
+
+    .reserve-ring {
+      stroke: url(#reserveGradient);
+      stroke-width: 18;
+      filter: drop-shadow(0 0 12px rgba(214, 176, 122, 0.3));
+      opacity: calc(0.4 + (var(--reserve-intensity) * 0.6));
+      transition: stroke-dasharray 0.6s ease;
+    }
+
+    .progress-track {
+      stroke: rgba(63, 124, 255, 0.12);
+      stroke-width: 10;
+    }
+
+    .progress-ring {
+      stroke: url(#progressGradient);
+      stroke-width: 10;
+      filter: drop-shadow(0 0 10px rgba(63, 124, 255, 0.32));
+      transition: stroke-dasharray 0.9s linear;
+    }
+
+    .distribution-spokes .spoke {
+      stroke: rgba(244, 239, 230, 0.18);
+      stroke-width: 3;
+      opacity: calc(0.28 + (var(--distribution-intensity) * 0.55));
+    }
+
+    .distribution-spokes .spoke--hot {
+      stroke: rgba(214, 176, 122, 0.5);
+      opacity: calc(0.38 + (var(--distribution-intensity) * 0.58));
+    }
+
+    .distribution-spokes .dist-node {
+      fill: rgba(244, 239, 230, 0.78);
+      opacity: calc(0.42 + (var(--distribution-intensity) * 0.58));
+      filter: drop-shadow(0 0 8px rgba(244, 239, 230, 0.22));
+    }
+
+    .intake .intake-path {
+      fill: none;
+      stroke: rgba(63, 124, 255, 0.28);
+      stroke-width: 8;
+      stroke-linecap: round;
+      opacity: calc(0.2 + (var(--eth-intensity) * 0.78));
+    }
+
+    .intake .intake-node {
+      fill: rgba(63, 124, 255, 0.78);
+      opacity: calc(0.24 + (var(--eth-intensity) * 0.76));
+      filter: drop-shadow(0 0 12px rgba(63, 124, 255, 0.42));
+    }
+
+    .intake .intake-node--minor {
+      fill: rgba(63, 124, 255, 0.56);
+    }
+
+    .core-heartbeat {
+      fill: rgba(63, 124, 255, 0.1);
+      stroke: rgba(63, 124, 255, 0.22);
+      stroke-width: 1.5;
+      animation: corePulse var(--pulse-duration) ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    .core-heart {
+      fill: url(#heartGradient);
+      stroke: rgba(244, 239, 230, 0.14);
+      stroke-width: 2;
+      filter: drop-shadow(0 0 18px rgba(214, 176, 122, 0.18));
+    }
+
+    .core-heart--inner {
+      fill: rgba(244, 239, 230, 0.12);
+      stroke: rgba(244, 239, 230, 0.3);
+      stroke-width: 1.2;
+      filter: none;
+    }
+
+    .core-axis {
+      stroke: rgba(244, 239, 230, 0.28);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .core-centerplate {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: min(240px, 56%);
+      padding: 18px 16px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(14, 17, 25, 0.86), rgba(10, 12, 18, 0.84));
+      backdrop-filter: blur(14px);
+      text-align: center;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.25);
+      z-index: 3;
+    }
+
+    .core-centerplate strong {
+      display: block;
+      margin-top: 6px;
+      font-size: clamp(1.9rem, 5vw, 2.5rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+    }
+
+    .core-center-sub {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .core-badge {
+      position: absolute;
+      z-index: 2;
+      background: rgba(11, 14, 20, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .core-badge--top {
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .core-badge--left {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .core-badge--right {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .core-badge--bottom {
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .core-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-card {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.025);
+      min-height: 104px;
+    }
+
+    .metric-card span {
+      display: block;
+      color: var(--dim);
+      font-size: 0.68rem;
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 1.2rem;
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .metric-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    @keyframes corePulse {
+      0%, 100% { transform: scale(0.985); opacity: 0.38; }
+      50% { transform: scale(1.05); opacity: calc(0.54 + (var(--pulse-strength) * 0.42)); }
+    }
+
+    @media (max-width: 1120px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 980px) {
+      .core-metrics { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .core-scene { min-height: 420px; }
+      .core-badge--left,
+      .core-badge--right { top: auto; bottom: 86px; transform: none; }
+      .core-badge--left { left: 18px; }
+      .core-badge--right { right: 18px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-copy,
+      .core-panel { padding: 24px; border-radius: 22px; }
+      h1 { max-width: none; }
+      .hero-copy { padding-bottom: 28px; }
+      .core-scene { min-height: 380px; }
+      .core-centerplate { width: min(228px, 68%); }
+      .core-metrics { grid-template-columns: 1fr; }
+      .core-badge { font-size: 0.64rem; padding: 8px 11px; }
+      .core-badge--top { top: 16px; }
+      .core-badge--bottom { bottom: 18px; }
+      .core-badge--left,
+      .core-badge--right { bottom: 76px; }
+    }
+
   </style>
 </head>
 <body>
@@ -456,7 +885,7 @@
         <span class="brand-mark">NARA</span>
         <span class="brand-copy">
           <strong>Protocol</strong>
-          <span>Base-native yield</span>
+          <span>Distribution core</span>
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
@@ -469,67 +898,139 @@
 
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Fixed supply. Sealed reserves. Live on Base.</div>
-        <h1>Hard supply. Patient yield.</h1>
-        <p class="hero-sub">Fixed-supply yield on Base with sealed reward and bond reserves.</p>
+        <div class="eyebrow">Live distribution core on Base</div>
+        <h1>One core. Every reward flow.</h1>
+        <p class="hero-sub">Finite NARA from the sealed reserve. ETH from current and future products. Routed every 15 minutes to committed lockers by active weight.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/mine">Open App &#8594;</a>
           <a class="btn btn-secondary" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Read Docs</a>
         </div>
+        <div class="hero-facts">
+          <span class="fact-pill">700K sealed reserve</span>
+          <span class="fact-pill">250K sealed bond vault</span>
+          <span class="fact-pill">15m epoch cadence</span>
+        </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Protocol snapshot">
-        <div>
-          <div class="panel-head">
-            <div>
-              <div class="mini-label">Protocol snapshot</div>
-              <h2>Live snapshot</h2>
-            </div>
+      <aside class="core-panel" aria-label="Distribution core" data-core-panel>
+        <div class="core-panel-head">
+          <div>
+            <div class="mini-label">Live distribution core</div>
+            <h2>Protocol earnings engine</h2>
           </div>
-          <div class="detail-list">
-            <div class="detail-row">
-              <span class="detail-k">Supply</span>
-              <span class="detail-v">1M fixed</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-k">Rewards</span>
-              <span class="detail-v">700K sealed</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-k">Bonds</span>
-              <span class="detail-v">250K sealed</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-k">Float</span>
-              <span class="detail-v">~20K liquid</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-k">Locked</span>
-              <span class="detail-v">30K / 1y / treasury + owner</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-k">Epochs</span>
-              <span class="detail-v">15m on Base</span>
-            </div>
+          <span class="core-status" data-sync-badge>Loading</span>
+        </div>
+
+        <div class="core-scene" data-distribution-core>
+          <svg class="core-svg" viewBox="0 0 640 640" aria-hidden="true">
+            <defs>
+              <linearGradient id="reserveGradient" x1="106" y1="106" x2="534" y2="534" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#f4e4c5" />
+                <stop offset="55%" stop-color="#d6b07a" />
+                <stop offset="100%" stop-color="#8f6b3b" />
+              </linearGradient>
+              <linearGradient id="progressGradient" x1="160" y1="160" x2="480" y2="480" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#8fb5ff" />
+                <stop offset="100%" stop-color="#2a67eb" />
+              </linearGradient>
+              <radialGradient id="heartGradient" cx="50%" cy="50%" r="52%">
+                <stop offset="0%" stop-color="#f4efe6" stop-opacity="0.9" />
+                <stop offset="44%" stop-color="#2f74ff" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#090c14" stop-opacity="0.9" />
+              </radialGradient>
+            </defs>
+            <circle class="shell-shadow" cx="320" cy="320" r="248" />
+            <circle class="shell-aura" cx="320" cy="320" r="248" />
+            <circle class="shell-ring" cx="320" cy="320" r="228" />
+            <circle class="shell-ring shell-ring--inner" cx="320" cy="320" r="186" />
+            <circle class="reserve-track" cx="320" cy="320" r="214" />
+            <circle class="reserve-ring" cx="320" cy="320" r="214" data-reserve-ring />
+            <circle class="progress-track" cx="320" cy="320" r="158" />
+            <circle class="progress-ring" cx="320" cy="320" r="158" data-progress-ring />
+            <g class="intake intake--left">
+              <path class="intake-path" d="M88 320 C 138 320, 180 320, 232 320" />
+              <circle class="intake-node" cx="88" cy="320" r="10" />
+              <circle class="intake-node intake-node--minor" cx="152" cy="320" r="6" />
+            </g>
+            <g class="intake intake--right">
+              <path class="intake-path" d="M552 320 C 502 320, 460 320, 408 320" />
+              <circle class="intake-node" cx="552" cy="320" r="10" />
+              <circle class="intake-node intake-node--minor" cx="488" cy="320" r="6" />
+            </g>
+            <g class="distribution-spokes">
+              <line class="spoke spoke--hot" x1="320" y1="320" x2="320" y2="112" />
+              <line class="spoke" x1="320" y1="320" x2="470" y2="170" />
+              <line class="spoke" x1="320" y1="320" x2="528" y2="320" />
+              <line class="spoke spoke--hot" x1="320" y1="320" x2="470" y2="470" />
+              <line class="spoke" x1="320" y1="320" x2="320" y2="528" />
+              <line class="spoke" x1="320" y1="320" x2="170" y2="470" />
+              <line class="spoke spoke--hot" x1="320" y1="320" x2="112" y2="320" />
+              <line class="spoke" x1="320" y1="320" x2="170" y2="170" />
+              <circle class="dist-node" cx="320" cy="112" r="11" />
+              <circle class="dist-node" cx="470" cy="170" r="9" />
+              <circle class="dist-node" cx="528" cy="320" r="11" />
+              <circle class="dist-node" cx="470" cy="470" r="9" />
+              <circle class="dist-node" cx="320" cy="528" r="11" />
+              <circle class="dist-node" cx="170" cy="470" r="9" />
+              <circle class="dist-node" cx="112" cy="320" r="11" />
+              <circle class="dist-node" cx="170" cy="170" r="9" />
+            </g>
+            <circle class="core-heartbeat" cx="320" cy="320" r="98" />
+            <circle class="core-heart" cx="320" cy="320" r="74" />
+            <circle class="core-heart core-heart--inner" cx="320" cy="320" r="42" />
+            <path class="core-axis" d="M260 320 H380" />
+            <path class="core-axis" d="M320 260 V380" />
+          </svg>
+          <span class="core-badge core-badge--top">Sealed reserve</span>
+          <span class="core-badge core-badge--left">ETH from products</span>
+          <span class="core-badge core-badge--right">Weight sets share</span>
+          <span class="core-badge core-badge--bottom">Distributed every 15m</span>
+          <div class="core-centerplate">
+            <span class="mini-label">Current epoch</span>
+            <strong data-current-epoch>515</strong>
+            <span class="core-center-sub" data-epoch-countdown>Loading core state...</span>
           </div>
+        </div>
+
+        <div class="core-metrics">
+          <article class="metric-card">
+            <span>Engine sync</span>
+            <strong data-sync-value>Loading...</strong>
+            <p data-sync-note>Waiting for the live engine feed.</p>
+          </article>
+          <article class="metric-card">
+            <span>Sealed reserve</span>
+            <strong data-reserve-value>700,000 NARA</strong>
+            <p data-reserve-note>Finite NARA available for distribution.</p>
+          </article>
+          <article class="metric-card">
+            <span>ETH queued</span>
+            <strong data-eth-value>0 ETH</strong>
+            <p data-eth-note>Future products can route value into the same core.</p>
+          </article>
+          <article class="metric-card">
+            <span>Active weight</span>
+            <strong data-weight-value>90K weight</strong>
+            <p data-weight-note>Committed lockers set the distribution curve.</p>
+          </article>
         </div>
       </aside>
     </section>
 
     <section class="section">
-      <div class="section-label">Protocol edges</div>
+      <div class="section-label">How the core works</div>
       <div class="grid-3">
         <article class="info-card">
-          <h3>Hard supply</h3>
-          <p>No mint switch survives deployment. The supply is fixed at 1,000,000 NARA.</p>
+          <h3>Finite reserve in motion</h3>
+          <p>700,000 NARA is sealed in the reward reserve and admitted into the engine over time. The emission side is finite by design.</p>
         </article>
         <article class="info-card">
-          <h3>Sealed distribution</h3>
-          <p>700,000 NARA for rewards and 250,000 NARA for bonds are sealed by contract logic, not by policy promises.</p>
+          <h3>ETH is the expanding side</h3>
+          <p>The same core accepts ETH from current and future protocol products, so new revenue surfaces do not need a new distribution system.</p>
         </article>
         <article class="info-card">
-          <h3>Yield follows patience</h3>
-          <p>The live epoch engine rewards long-duration lockers with NARA drip today and ETH flow as protocol revenue expands.</p>
+          <h3>Commitment decides share</h3>
+          <p>Locks become active weight. The more committed the position, the more of each epoch's NARA and ETH flow it earns.</p>
         </article>
       </div>
     </section>
@@ -556,7 +1057,7 @@
     </section>
 
     <footer class="footer">
-      <div>Base mainnet &middot; Fixed supply &middot; Sealed reserves</div>
+      <div>Base mainnet &middot; Distribution core live &middot; Fixed supply &middot; Sealed reserves</div>
       <div class="footer-links">
         <a href="/mine">App</a>
         <a href="https://basescan.org/token/0xE444de61752bD13D1D37Ee59c31ef4e489bd727C" target="_blank" rel="noopener noreferrer">BaseScan</a>
@@ -565,6 +1066,161 @@
       </div>
     </footer>
   </main>
+
+  <script>
+    (function () {
+      var ONE_ETHER = 1000000000000000000n;
+      var EPOCH_LENGTH_MS = 15 * 60 * 1000;
+      var reserveCircumference = 2 * Math.PI * 214;
+      var progressCircumference = 2 * Math.PI * 158;
+      var panel = document.querySelector('[data-core-panel]');
+      if (!panel) return;
+      var reserveRing = panel.querySelector('[data-reserve-ring]');
+      var progressRing = panel.querySelector('[data-progress-ring]');
+      var currentEpochEl = panel.querySelector('[data-current-epoch]');
+      var countdownEl = panel.querySelector('[data-epoch-countdown]');
+      var syncBadgeEl = panel.querySelector('[data-sync-badge]');
+      var syncValueEl = panel.querySelector('[data-sync-value]');
+      var syncNoteEl = panel.querySelector('[data-sync-note]');
+      var reserveValueEl = panel.querySelector('[data-reserve-value]');
+      var reserveNoteEl = panel.querySelector('[data-reserve-note]');
+      var ethValueEl = panel.querySelector('[data-eth-value]');
+      var ethNoteEl = panel.querySelector('[data-eth-note]');
+      var weightValueEl = panel.querySelector('[data-weight-value]');
+      var weightNoteEl = panel.querySelector('[data-weight-note]');
+      var countdownTimer = null;
+      var refreshTimer = null;
+      var refreshLocked = false;
+      var epochEndsAtMs = Date.now() + EPOCH_LENGTH_MS;
+      var fallbackState = {
+        currentEpoch: 515,
+        processedEpoch: 514,
+        epochBacklog: 1,
+        epochEndsAt: new Date(Date.now() + 6 * 60 * 1000).toISOString(),
+        totalLocked: '30000000000000000000000',
+        activeTotalWeight: '90000000000000000000000',
+        pendingEthForNextEpoch: '0',
+        rewardReserveAvailable: '699999752019683961719265',
+        totalRewardFundsAvailable: '699999752019683961719265'
+      };
+      function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+      function parseBigInt(value) { try { return BigInt(value); } catch (error) { return 0n; } }
+      function formatCompactWhole(whole) {
+        var num = Number(whole);
+        if (!Number.isFinite(num)) return String(whole);
+        if (num >= 1000000) return (num / 1000000).toFixed(num < 10000000 ? 1 : 0).replace(/\.0$/, '') + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(num < 10000 ? 1 : 0).replace(/\.0$/, '') + 'K';
+        return num.toLocaleString('en-US');
+      }
+      function fractionDigits(wei, digits) {
+        var base = 10n ** BigInt(18 - digits);
+        return ((wei % ONE_ETHER) / base).toString().padStart(digits, '0');
+      }
+      function formatTokenAmount(wei, digits) {
+        var whole = wei / ONE_ETHER;
+        var wholeText = Number(whole).toLocaleString('en-US');
+        if (digits <= 0) return wholeText;
+        var fraction = fractionDigits(wei, digits).replace(/0+$/, '');
+        return fraction ? wholeText + '.' + fraction : wholeText;
+      }
+      function formatEthAmount(wei) {
+        if (wei === 0n) return '0';
+        var whole = wei / ONE_ETHER;
+        if (whole > 0n) {
+          var wholeText = whole.toString();
+          var fraction = fractionDigits(wei, 3).replace(/0+$/, '');
+          return fraction ? wholeText + '.' + fraction : wholeText;
+        }
+        var fraction = fractionDigits(wei, 4).replace(/0+$/, '');
+        return '0.' + (fraction || '0');
+      }
+      function setReserveRing(ratio) {
+        var dash = reserveCircumference * clamp(ratio, 0, 1);
+        reserveRing.style.strokeDasharray = dash.toFixed(1) + ' ' + reserveCircumference.toFixed(1);
+      }
+      function setProgressRing(progress) {
+        var dash = progressCircumference * clamp(progress, 0, 1);
+        progressRing.style.strokeDasharray = dash.toFixed(1) + ' ' + progressCircumference.toFixed(1);
+      }
+      function updateCountdown() {
+        var remaining = epochEndsAtMs - Date.now();
+        if (remaining <= 0) {
+          countdownEl.textContent = 'Refreshing core state...';
+          setProgressRing(1);
+          if (!refreshLocked) {
+            refreshLocked = true;
+            loadEngineStatus();
+          }
+          return;
+        }
+        var totalSeconds = Math.floor(remaining / 1000);
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+        countdownEl.textContent = 'Next epoch in ' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+        setProgressRing(1 - (remaining / EPOCH_LENGTH_MS));
+      }
+      function applyEngineState(state, isFallback) {
+        panel.classList.toggle('is-fallback', !!isFallback);
+        var currentEpoch = Number(state.currentEpoch || 0);
+        var processedEpoch = Number(state.processedEpoch || 0);
+        var backlog = Number(state.epochBacklog || 0);
+        var totalLocked = parseBigInt(state.totalLocked || '0');
+        var activeTotalWeight = parseBigInt(state.activeTotalWeight || '0');
+        var pendingEthForNextEpoch = parseBigInt(state.pendingEthForNextEpoch || '0');
+        var rewardReserveAvailable = parseBigInt(state.rewardReserveAvailable || '0');
+        var totalRewardFundsAvailable = parseBigInt(state.totalRewardFundsAvailable || '0');
+        var reserveRatio = totalRewardFundsAvailable > 0n ? Number((rewardReserveAvailable * 10000n) / totalRewardFundsAvailable) / 10000 : 1;
+        var averageMultiplier = totalLocked > 0n ? Number((activeTotalWeight * 100n) / totalLocked) / 100 : 0;
+        var distributionIntensity = clamp(averageMultiplier / 4, 0.24, 1);
+        var pendingEthMilli = Number(pendingEthForNextEpoch / 1000000000000000n);
+        var ethIntensity = pendingEthForNextEpoch > 0n ? clamp(0.22 + (Math.log10(pendingEthMilli + 1) / 3.6), 0.22, 1) : 0.08;
+        panel.style.setProperty('--reserve-intensity', String(clamp(reserveRatio, 0.18, 1)));
+        panel.style.setProperty('--eth-intensity', String(ethIntensity));
+        panel.style.setProperty('--distribution-intensity', String(distributionIntensity));
+        panel.style.setProperty('--pulse-duration', backlog > 0 ? '6s' : '4.8s');
+        panel.style.setProperty('--pulse-strength', backlog > 0 ? '0.32' : '0.48');
+        panel.classList.toggle('is-stale', backlog > 0);
+        currentEpochEl.textContent = currentEpoch.toLocaleString('en-US');
+        syncValueEl.textContent = currentEpoch.toLocaleString('en-US') + ' live / ' + processedEpoch.toLocaleString('en-US') + ' processed';
+        syncNoteEl.textContent = backlog > 0 ? 'The keeper is slightly behind wall clock. Distribution stays in sync once the next epoch lands.' : 'The engine is synced to wall clock and ready for the next 15 minute distribution.';
+        syncBadgeEl.textContent = isFallback ? 'Cached core' : (backlog > 0 ? String(backlog) + ' epoch backlog' : 'In sync');
+        reserveValueEl.textContent = formatTokenAmount(rewardReserveAvailable, 2) + ' NARA';
+        reserveNoteEl.textContent = Math.round(reserveRatio * 100) + '% of reward funds remain sealed inside the reserve side.';
+        ethValueEl.textContent = formatEthAmount(pendingEthForNextEpoch) + ' ETH';
+        ethNoteEl.textContent = pendingEthForNextEpoch > 0n ? 'Queued for the next distribution cycle.' : 'Awaiting the next routed ETH flow from protocol activity.';
+        weightValueEl.textContent = formatCompactWhole(activeTotalWeight / ONE_ETHER) + ' weight';
+        weightNoteEl.textContent = formatCompactWhole(totalLocked / ONE_ETHER) + ' locked | ' + averageMultiplier.toFixed(2) + 'x average weight.';
+        setReserveRing(reserveRatio);
+        epochEndsAtMs = Date.parse(state.epochEndsAt || '') || (Date.now() + EPOCH_LENGTH_MS);
+        refreshLocked = false;
+        updateCountdown();
+        if (!countdownTimer) countdownTimer = window.setInterval(updateCountdown, 1000);
+      }
+      async function loadEngineStatus() {
+        try {
+          var response = await fetch('/api/engine-status', { cache: 'no-store' });
+          if (!response.ok) throw new Error('status ' + response.status);
+          var payload = await response.json();
+          if (!payload || typeof payload.currentEpoch !== 'number') throw new Error('invalid payload');
+          applyEngineState(payload, false);
+        } catch (error) {
+          console.error('distribution core fetch failed', error);
+          if (!panel.dataset.initialized) applyEngineState(fallbackState, true);
+          else syncBadgeEl.textContent = 'Using cached core';
+        } finally {
+          panel.dataset.initialized = '1';
+        }
+      }
+      applyEngineState(fallbackState, true);
+      loadEngineStatus();
+      refreshTimer = window.setInterval(loadEngineStatus, 60000);
+      window.addEventListener('beforeunload', function () {
+        if (countdownTimer) window.clearInterval(countdownTimer);
+        if (refreshTimer) window.clearInterval(refreshTimer);
+      });
+    })();
+  </script>
+
 </body>
 </html>
 
