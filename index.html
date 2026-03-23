@@ -1,46 +1,570 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NARA | Fixed-Supply Yield Protocol On Base</title>
-    <meta name="description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#08090d" />
-    <link rel="canonical" href="https://www.naraprotocol.io/" />
-    <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png" />
-    <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/my-favicon/site.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="NARA" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.naraprotocol.io/" />
-    <meta property="og:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
-    <meta property="og:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
-    <meta property="og:image" content="https://www.naraprotocol.io/og-image-v4.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NARA | Fixed-Supply Yield Protocol On Base</title>
+  <meta name="description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#08090d" />
+  <link rel="canonical" href="https://www.naraprotocol.io/" />
+
+  <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png" />
+  <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/my-favicon/site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="NARA" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.naraprotocol.io/" />
+  <meta property="og:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
+  <meta property="og:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta property="og:image" content="https://www.naraprotocol.io/og-image-v4.png" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@NARA_protocol" />
-    <meta name="twitter:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
-    <meta name="twitter:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
-    <meta name="twitter:image" content="https://www.naraprotocol.io/og-image-v4.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@NARA_protocol" />
+  <meta name="twitter:title" content="NARA | Fixed-Supply Yield Protocol On Base" />
+  <meta name="twitter:description" content="1,000,000 NARA fixed forever. 700,000 sealed for rewards. 250,000 sealed for bonds. Roughly 20,000 remains liquid, and treasury plus owner already locked 30,000 for one year on Base." />
+  <meta name="twitter:image" content="https://www.naraprotocol.io/og-image-v4.png" />
     <meta name="twitter:image:alt" content="NARA protocol live snapshot on Base" />
-    <meta name="keywords" content="NARA, Base, DeFi, fixed supply, sealed reserve, bond vault, yield protocol, onchain rewards" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "NARA Protocol",
-        "url": "https://www.naraprotocol.io/",
-        "description": "Base-native fixed-supply yield protocol with sealed reward and bond reserves."
+
+  <meta name="keywords" content="NARA, Base, DeFi, fixed supply, sealed reserve, bond vault, yield protocol, onchain rewards" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "NARA Protocol",
+      "url": "https://www.naraprotocol.io/",
+      "description": "Base-native fixed-supply yield protocol with sealed reward and bond reserves."
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #08090d;
+      --surface: rgba(17, 20, 28, 0.84);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --text: #f4efe6;
+      --muted: #a79f92;
+      --dim: #7e766b;
+      --blue: #3f7cff;
+      --gold: #d6b07a;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(214, 176, 122, 0.12), transparent 26%),
+        radial-gradient(circle at top right, rgba(63, 124, 255, 0.12), transparent 22%),
+        linear-gradient(180deg, #0a0c11 0%, #08090d 46%, #07080b 100%);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 24px 0 88px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      padding: 6px 10px;
+      background: #f5efe6;
+      color: #090a0f;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      font-size: 1.25rem;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-copy strong {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .brand-copy span,
+    .nav a,
+    .eyebrow,
+    .mini-label,
+    .detail-k,
+    .footer,
+    .section-label,
+    .surface-link span {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-copy span {
+      color: var(--dim);
+      font-size: 0.72rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill,
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .pill-live::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(214, 176, 122, 0.7);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 32px;
+      align-items: stretch;
+      padding: 28px 0 34px;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .info-card,
+    .surface-link {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(19, 23, 33, 0.92), rgba(11, 14, 20, 0.92));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-copy {
+      padding: 40px;
+      border-radius: 28px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 11ch;
+      font-size: clamp(3.2rem, 9vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      margin: 22px 0 0;
+      max-width: 42rem;
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .btn:hover,
+    .surface-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4d86ff, #2a67eb);
+      color: #f6f8ff;
+      box-shadow: 0 18px 38px rgba(42, 103, 235, 0.34);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+    }
+
+    .hero-panel {
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .mini-label {
+      color: var(--dim);
+      font-size: 0.72rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .detail-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .detail-k {
+      color: var(--dim);
+      font-size: 0.73rem;
+    }
+
+    .detail-v {
+      text-align: right;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding-top: 10px;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 0.74rem;
+      margin-bottom: 14px;
+    }
+
+    .grid-3,
+    .surfaces {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-card,
+    .surface-link {
+      padding: 24px;
+      border-radius: 24px;
+    }
+
+    .info-card h3,
+    .surface-link strong {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .info-card p,
+    .surface-link p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .surface-link span {
+      display: inline-block;
+      margin-top: 18px;
+      color: #93b4ff;
+      font-size: 0.76rem;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border-soft);
+      color: var(--dim);
+      font-size: 0.74rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover,
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
       }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+
+      .grid-3,
+      .surfaces {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+        padding: 14px 0 64px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .info-card,
+      .surface-link {
+        border-radius: 22px;
+      }
+
+      .hero-copy,
+      .hero-panel {
+        padding: 24px;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: clamp(2.5rem, 16vw, 4rem);
+      }
+
+      .grid-3,
+      .surfaces {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-row,
+      .panel-head,
+      .footer {
+        align-items: flex-start;
+      }
+
+      .detail-row {
+        flex-direction: column;
+      }
+
+      .detail-v {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">NARA</span>
+        <span class="brand-copy">
+          <strong>Protocol</strong>
+          <span>Base-native yield</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <span class="pill pill-live">Base mainnet live</span>
+        <a href="/mine">Open App</a>
+        <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Docs</a>
+        <a href="https://x.com/NARA_protocol" target="_blank" rel="noopener noreferrer">X</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Fixed supply. Sealed reserves. Live on Base.</div>
+        <h1>Hard supply. Patient yield.</h1>
+        <p class="hero-sub">Fixed-supply yield on Base with sealed reward and bond reserves.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/mine">Open App &#8594;</a>
+          <a class="btn btn-secondary" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Read Docs</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Protocol snapshot">
+        <div>
+          <div class="panel-head">
+            <div>
+              <div class="mini-label">Protocol snapshot</div>
+              <h2>Live snapshot</h2>
+            </div>
+          </div>
+          <div class="detail-list">
+            <div class="detail-row">
+              <span class="detail-k">Supply</span>
+              <span class="detail-v">1M fixed</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Rewards</span>
+              <span class="detail-v">700K sealed</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Bonds</span>
+              <span class="detail-v">250K sealed</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Float</span>
+              <span class="detail-v">~20K liquid</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Locked</span>
+              <span class="detail-v">30K / 1y / treasury + owner</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-k">Epochs</span>
+              <span class="detail-v">15m on Base</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Protocol edges</div>
+      <div class="grid-3">
+        <article class="info-card">
+          <h3>Hard supply</h3>
+          <p>No mint switch survives deployment. The supply is fixed at 1,000,000 NARA.</p>
+        </article>
+        <article class="info-card">
+          <h3>Sealed distribution</h3>
+          <p>700,000 NARA for rewards and 250,000 NARA for bonds are sealed by contract logic, not by policy promises.</p>
+        </article>
+        <article class="info-card">
+          <h3>Yield follows patience</h3>
+          <p>The live epoch engine rewards long-duration lockers with NARA drip today and ETH flow as protocol revenue expands.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Start here</div>
+      <div class="surfaces">
+        <a class="surface-link" href="/mine">
+          <strong>Open the app</strong>
+          <p>Use the live interface for locking, wallet state, rewards, and the current launch board at /mine.</p>
+          <span>Launch /mine</span>
+        </a>
+        <a class="surface-link" href="https://app.uniswap.org/explore/tokens/base/0xe444de61752bd13d1d37ee59c31ef4e489bd727c" target="_blank" rel="noopener noreferrer">
+          <strong>Trade NARA</strong>
+          <p>Access the live Base market, understand the thin float, and route into the app when you are ready to lock.</p>
+          <span>Open Uniswap</span>
+        </a>
+        <a class="surface-link" href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">
+          <strong>Read docs</strong>
+          <p>Contracts, live-state notes, operator context, and deeper protocol research live in the public repo.</p>
+          <span>Open GitHub</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Base mainnet &middot; Fixed supply &middot; Sealed reserves</div>
+      <div class="footer-links">
+        <a href="/mine">App</a>
+        <a href="https://basescan.org/token/0xE444de61752bD13D1D37Ee59c31ef4e489bd727C" target="_blank" rel="noopener noreferrer">BaseScan</a>
+        <a href="https://github.com/NARAProtocol/nara_protocol" target="_blank" rel="noopener noreferrer">Docs</a>
+        <a href="https://x.com/NARA_protocol" target="_blank" rel="noopener noreferrer">X</a>
+      </div>
+    </footer>
+  </main>
+</body>
 </html>
+
