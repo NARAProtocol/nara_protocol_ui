@@ -3,6 +3,14 @@
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/lotto",
+      "destination": "https://lotto-game-bammjte61-leodev21s-projects.vercel.app/lotto"
+    },
+    {
+      "source": "/lotto/:path*",
+      "destination": "https://lotto-game-bammjte61-leodev21s-projects.vercel.app/lotto/:path*"
+    },
+    {
       "source": "/mine",
       "destination": "https://nara-lockboard.pages.dev/"
     },
