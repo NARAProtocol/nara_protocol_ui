@@ -4,11 +4,11 @@
   "rewrites": [
     {
       "source": "/lotto",
-      "destination": "https://lotto-game.vercel.app/lotto"
+      "destination": "https://lotto-game-leodev21s-projects.vercel.app/lotto"
     },
     {
       "source": "/lotto/:path*",
-      "destination": "https://lotto-game.vercel.app/lotto/:path*"
+      "destination": "https://lotto-game-leodev21s-projects.vercel.app/lotto/:path*"
     },
     {
       "source": "/mine",
