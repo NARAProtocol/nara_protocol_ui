@@ -12,6 +12,19 @@ NARA is an experimental protocol exploring competitive token distribution mechan
 - **X:** [@NARA_protocol](https://x.com/NARA_protocol)
 - **Farcaster:** [@naraprotocol](https://warpcast.com/naraprotocol)
 
+## Public Route Map
+
+This repo owns the public `naraprotocol.io` domain and proxies app paths to the live app deployments.
+
+Current external rewrites in `vercel.json`:
+- `/lotto` -> `https://lotto-nara.vercel.app/lotto`
+- `/arena` -> `https://arena-run-ui.vercel.app/arena`
+- `/mine` -> `https://nara-lockboard.pages.dev/`
+
+Rule:
+- point public rewrites only at stable public app aliases
+- do not point `naraprotocol.io` rewrites at protected preview URLs like `*-naradevs-projects-*.vercel.app`, because they can return `401` outside the owner session
+
 ## Development
 
 ### Prerequisites

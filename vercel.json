@@ -11,6 +11,14 @@
       "destination": "https://lotto-nara.vercel.app/lotto/:path*"
     },
     {
+      "source": "/arena",
+      "destination": "https://arena-run-ui.vercel.app/arena"
+    },
+    {
+      "source": "/arena/:path*",
+      "destination": "https://arena-run-ui.vercel.app/arena/:path*"
+    },
+    {
       "source": "/mine",
       "destination": "https://nara-lockboard.pages.dev/"
     },
