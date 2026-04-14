@@ -12,11 +12,11 @@
     },
     {
       "source": "/arena",
-      "destination": "https://arena-run-ui.vercel.app/arena"
+      "destination": "https://arenaui-black.vercel.app/arena"
     },
     {
       "source": "/arena/:path*",
-      "destination": "https://arena-run-ui.vercel.app/arena/:path*"
+      "destination": "https://arenaui-black.vercel.app/arena/:path*"
     },
     {
       "source": "/mine",
